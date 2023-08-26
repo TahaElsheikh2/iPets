@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OnboardingCollectionViewCell" id="gTV-IL-0wX" customClass="OnboardingCollectionViewCell" customModule="iPets" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="241" height="517"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="241" height="517"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y97-mA-zZd">
+                        <rect key="frame" x="0.0" y="0.0" width="241" height="517"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding1" translatesAutoresizingMaskIntoConstraints="NO" id="4zN-rF-pEa">
+                                <rect key="frame" x="0.0" y="106.33333333333334" width="241" height="304.33333333333326"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet Lorem ipsum dolo" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3nG-Yo-zTS">
+                                <rect key="frame" x="0.0" y="440.66666666666669" width="241" height="61"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="4zN-rF-pEa" firstAttribute="centerY" secondItem="Y97-mA-zZd" secondAttribute="centerY" id="Wim-eX-K70"/>
+                            <constraint firstItem="3nG-Yo-zTS" firstAttribute="top" secondItem="4zN-rF-pEa" secondAttribute="bottom" constant="30" id="iGz-cV-nzU"/>
+                            <constraint firstAttribute="trailing" secondItem="3nG-Yo-zTS" secondAttribute="trailing" id="lch-um-fpj"/>
+                            <constraint firstItem="3nG-Yo-zTS" firstAttribute="leading" secondItem="Y97-mA-zZd" secondAttribute="leading" id="o7b-dQ-8F1"/>
+                            <constraint firstItem="4zN-rF-pEa" firstAttribute="leading" secondItem="Y97-mA-zZd" secondAttribute="leading" id="qDT-IU-oT0"/>
+                            <constraint firstAttribute="trailing" secondItem="4zN-rF-pEa" secondAttribute="trailing" id="x3p-Nw-rGK"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Y97-mA-zZd" secondAttribute="trailing" id="S6M-Ur-54N"/>
+                <constraint firstItem="Y97-mA-zZd" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="VQD-Ha-b9G"/>
+                <constraint firstAttribute="bottom" secondItem="Y97-mA-zZd" secondAttribute="bottom" id="Xsp-qv-JOM"/>
+                <constraint firstItem="Y97-mA-zZd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="vfB-MN-NuR"/>
+            </constraints>
+            <size key="customSize" width="241" height="517"/>
+            <connections>
+                <outlet property="containerView" destination="Y97-mA-zZd" id="07T-IW-qcU"/>
+                <outlet property="descLabel" destination="3nG-Yo-zTS" id="C6N-5i-5Nq"/>
+                <outlet property="imgView" destination="4zN-rF-pEa" id="Ycm-Fo-Jli"/>
+            </connections>
+            <point key="canvasLocation" x="-51.145038167938928" y="-45.422535211267608"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="onboarding1" width="319.5" height="304.5"/>
+    </resources>
+</document>

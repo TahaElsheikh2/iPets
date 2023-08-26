@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VerifyEmailViewController" customModule="iPets" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="2Qq-OD-Jl0" id="tzn-tP-kgu"/>
+                <outlet property="counterLabel" destination="m9I-Gb-4sf" id="3bI-du-zOp"/>
+                <outlet property="firstTextField" destination="HBr-jQ-Xn7" id="XML-w4-y8m"/>
+                <outlet property="fourthTextField" destination="b5P-Fl-iOM" id="ERx-56-4Mu"/>
+                <outlet property="imageView" destination="ult-BR-Yhm" id="w1h-Ra-XNZ"/>
+                <outlet property="infoLabel" destination="4AM-PU-zU5" id="ert-vI-4cq"/>
+                <outlet property="resendButton" destination="4fx-9r-41g" id="mGB-ES-Ewm"/>
+                <outlet property="secondTextField" destination="Otv-EP-HA1" id="HJ0-QR-kk7"/>
+                <outlet property="thirdTextField" destination="qz7-ju-gNS" id="DZk-BF-ZZw"/>
+                <outlet property="verifyButton" destination="mFq-fc-hHu" id="tgd-1I-soD"/>
+                <outlet property="verifyMailLabel" destination="n8W-5w-8Mf" id="OD9-n1-ITH"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DcO-sk-Do2">
+                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify your Email" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n8W-5w-8Mf">
+                            <rect key="frame" x="32" y="72" width="221" height="36"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
+                            <color key="textColor" red="0.14117647059999999" green="0.30980392159999998" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Qq-OD-Jl0" customClass="RadialGradientView" customModule="iPets" customModuleProvider="target">
+                            <rect key="frame" x="16" y="163" width="361" height="531"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mail" translatesAutoresizingMaskIntoConstraints="NO" id="ult-BR-Yhm">
+                                    <rect key="frame" x="102.66666666666669" y="32" width="156" height="137"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="137" id="5c2-uI-nBZ"/>
+                                        <constraint firstAttribute="width" constant="156" id="uNR-Mo-exk"/>
+                                    </constraints>
+                                </imageView>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="TpJ-vX-40O">
+                                    <rect key="frame" x="36" y="302" width="289" height="44"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HBr-jQ-Xn7" customClass="SingleDigitField" customModule="iPets" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="44" id="Q6E-Pa-Plv"/>
+                                                <constraint firstAttribute="height" constant="44" id="o4I-LA-vhc"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="58"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Otv-EP-HA1" customClass="SingleDigitField" customModule="iPets" customModuleProvider="target">
+                                            <rect key="frame" x="81.666666666666657" y="0.0" width="44" height="44"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="44" id="F37-df-i5l"/>
+                                                <constraint firstAttribute="height" constant="44" id="llC-jI-CpK"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="58"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qz7-ju-gNS" customClass="SingleDigitField" customModule="iPets" customModuleProvider="target">
+                                            <rect key="frame" x="163.33333333333334" y="0.0" width="44" height="44"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="44" id="NQQ-S0-v2t"/>
+                                                <constraint firstAttribute="width" constant="44" id="rrB-Cr-GEI"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="58"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b5P-Fl-iOM" customClass="SingleDigitField" customModule="iPets" customModuleProvider="target">
+                                            <rect key="frame" x="245" y="0.0" width="44" height="44"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="44" id="FqQ-me-MjR"/>
+                                                <constraint firstAttribute="width" constant="44" id="NV4-4j-kk4"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="58"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                </stackView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter the 4 digit code sent to ahmed@gmail.com" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4AM-PU-zU5">
+                                    <rect key="frame" x="16" y="219" width="329" height="50.333333333333314"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                    <color key="textColor" red="0.23921568630000001" green="0.30588235289999999" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mFq-fc-hHu">
+                                    <rect key="frame" x="16" y="454" width="329" height="45"/>
+                                    <color key="backgroundColor" red="0.49411764705882355" green="0.69803921568627447" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="45" id="jM0-v1-3IZ"/>
+                                    </constraints>
+                                    <color key="tintColor" red="0.99607843137254903" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="Verify"/>
+                                    <connections>
+                                        <action selector="verifyAction:" destination="-1" eventType="touchUpInside" id="V5S-Uz-rnY"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:59" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m9I-Gb-4sf">
+                                    <rect key="frame" x="164.66666666666666" y="378" width="32" height="17"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                    <color key="textColor" red="0.50588235294117645" green="0.70588235294117641" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fx-9r-41g">
+                                    <rect key="frame" x="125.33333333333334" y="405" width="110.33333333333334" height="17"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="17" id="KtA-Rx-vbi"/>
+                                    </constraints>
+                                    <color key="tintColor" red="0.54117647058823526" green="0.54117647058823526" blue="0.54117647058823526" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="Resend Code">
+                                        <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="resendAction:" destination="-1" eventType="touchUpInside" id="KgF-9g-ZXw"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="TpJ-vX-40O" secondAttribute="trailing" constant="36" id="0dp-8n-VOi"/>
+                                <constraint firstItem="m9I-Gb-4sf" firstAttribute="centerX" secondItem="TpJ-vX-40O" secondAttribute="centerX" id="3D3-VX-s8S"/>
+                                <constraint firstAttribute="trailing" secondItem="4AM-PU-zU5" secondAttribute="trailing" constant="16" id="4Nh-O4-JYI"/>
+                                <constraint firstItem="4AM-PU-zU5" firstAttribute="top" secondItem="ult-BR-Yhm" secondAttribute="bottom" constant="50" id="5FO-Oq-ULo"/>
+                                <constraint firstItem="mFq-fc-hHu" firstAttribute="leading" secondItem="2Qq-OD-Jl0" secondAttribute="leading" constant="16" id="F5c-ys-pof"/>
+                                <constraint firstAttribute="bottom" secondItem="mFq-fc-hHu" secondAttribute="bottom" constant="32" id="GkJ-Sv-iRd"/>
+                                <constraint firstItem="TpJ-vX-40O" firstAttribute="leading" secondItem="2Qq-OD-Jl0" secondAttribute="leading" constant="36" id="IgG-gE-fU5"/>
+                                <constraint firstItem="mFq-fc-hHu" firstAttribute="centerX" secondItem="ult-BR-Yhm" secondAttribute="centerX" id="LWO-Nw-2YR"/>
+                                <constraint firstAttribute="trailing" secondItem="mFq-fc-hHu" secondAttribute="trailing" constant="16" id="OHN-HY-6Dr"/>
+                                <constraint firstItem="4fx-9r-41g" firstAttribute="top" secondItem="m9I-Gb-4sf" secondAttribute="bottom" constant="10" id="Orb-0n-Efd"/>
+                                <constraint firstItem="4fx-9r-41g" firstAttribute="centerX" secondItem="m9I-Gb-4sf" secondAttribute="centerX" id="R7J-m6-YhI"/>
+                                <constraint firstItem="ult-BR-Yhm" firstAttribute="top" secondItem="2Qq-OD-Jl0" secondAttribute="top" constant="32" id="gMb-Y7-Vsx"/>
+                                <constraint firstItem="mFq-fc-hHu" firstAttribute="top" secondItem="4fx-9r-41g" secondAttribute="bottom" constant="32" id="gon-tE-3Oa"/>
+                                <constraint firstItem="TpJ-vX-40O" firstAttribute="top" secondItem="4AM-PU-zU5" secondAttribute="bottom" constant="32.666666666666686" id="hSv-Ak-sjY"/>
+                                <constraint firstItem="4AM-PU-zU5" firstAttribute="leading" secondItem="2Qq-OD-Jl0" secondAttribute="leading" constant="16" id="mhc-GM-jYL"/>
+                                <constraint firstItem="ult-BR-Yhm" firstAttribute="centerX" secondItem="2Qq-OD-Jl0" secondAttribute="centerX" id="wTb-vr-P5C"/>
+                                <constraint firstItem="m9I-Gb-4sf" firstAttribute="top" secondItem="TpJ-vX-40O" secondAttribute="bottom" constant="32" id="xD1-hu-fNt"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="n8W-5w-8Mf" firstAttribute="leading" secondItem="DcO-sk-Do2" secondAttribute="leading" constant="32" id="POW-sC-2n8"/>
+                        <constraint firstItem="2Qq-OD-Jl0" firstAttribute="leading" secondItem="DcO-sk-Do2" secondAttribute="leading" constant="16" id="XKn-gJ-Yc2"/>
+                        <constraint firstItem="n8W-5w-8Mf" firstAttribute="top" secondItem="DcO-sk-Do2" secondAttribute="top" constant="72" id="gaR-of-If7"/>
+                        <constraint firstAttribute="trailing" secondItem="2Qq-OD-Jl0" secondAttribute="trailing" constant="16" id="kTW-wL-eh7"/>
+                        <constraint firstItem="2Qq-OD-Jl0" firstAttribute="top" secondItem="n8W-5w-8Mf" secondAttribute="bottom" constant="55" id="rSm-3o-fkT"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="DcO-sk-Do2" secondAttribute="bottom" id="217-c2-AWX"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="DcO-sk-Do2" secondAttribute="trailing" id="3OX-UT-HYD"/>
+                <constraint firstItem="DcO-sk-Do2" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ASb-kK-ncV"/>
+                <constraint firstItem="DcO-sk-Do2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UQl-YJ-nR5"/>
+            </constraints>
+            <point key="canvasLocation" x="138" y="20"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="mail" width="129.5" height="131.5"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
