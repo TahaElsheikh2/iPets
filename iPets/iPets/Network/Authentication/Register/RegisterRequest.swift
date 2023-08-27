@@ -8,10 +8,16 @@
 import Foundation
 import Alamofire
 
-let RegisterEndPoint = "/api/auth/login"
+let RegisterEndPoint = "/api/auth/register"
+struct RegisterModel{
+    var name = ""
+    var password = ""
+    var email = ""
+    var phone = ""
 
+}
 enum RegisterRequest {
-    case Register
+    case Register(model:RegisterModel)
 }
 
 extension RegisterRequest:ApiRequest{
@@ -29,15 +35,9 @@ extension RegisterRequest:ApiRequest{
     }
     
     var parameters: [String : Any]? {
-
-        let parameters = ["email":"halaabdulmottleb@gmail.com","password":"12345678", "longitude":"30.1", "latitude":"22.8"]
-        return parameters
+        switch self{
+        case .Register(let model):
+            return ["email":model.email,"password":model.password, "user_name":model.name, "phone_1":model.phone]
+        }
     }
-    
-//    func body() throws -> Data? {
-//
-//        let bodyData = ["email":"halaabdulmottleb@gmail.com","password":"12345678", "longitude":"30.1", "latitude":"22.8"]
-//        let data = try?JSONSerialization.data(withJSONObject:  bodyData, options: [])
-//        return data
-//    }
 }

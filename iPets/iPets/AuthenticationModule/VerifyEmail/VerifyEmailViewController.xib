@@ -13,12 +13,14 @@
             <connections>
                 <outlet property="contentView" destination="2Qq-OD-Jl0" id="tzn-tP-kgu"/>
                 <outlet property="counterLabel" destination="m9I-Gb-4sf" id="3bI-du-zOp"/>
+                <outlet property="fifthTextField" destination="bt1-dp-xzo" id="fiV-S9-cX5"/>
                 <outlet property="firstTextField" destination="HBr-jQ-Xn7" id="XML-w4-y8m"/>
                 <outlet property="fourthTextField" destination="b5P-Fl-iOM" id="ERx-56-4Mu"/>
                 <outlet property="imageView" destination="ult-BR-Yhm" id="w1h-Ra-XNZ"/>
                 <outlet property="infoLabel" destination="4AM-PU-zU5" id="ert-vI-4cq"/>
                 <outlet property="resendButton" destination="4fx-9r-41g" id="mGB-ES-Ewm"/>
                 <outlet property="secondTextField" destination="Otv-EP-HA1" id="HJ0-QR-kk7"/>
+                <outlet property="sixthTextField" destination="5L8-iZ-397" id="LFt-WJ-Mn5"/>
                 <outlet property="thirdTextField" destination="qz7-ju-gNS" id="DZk-BF-ZZw"/>
                 <outlet property="verifyButton" destination="mFq-fc-hHu" id="tgd-1I-soD"/>
                 <outlet property="verifyMailLabel" destination="n8W-5w-8Mf" id="OD9-n1-ITH"/>
@@ -49,7 +51,7 @@
                                         <constraint firstAttribute="width" constant="156" id="uNR-Mo-exk"/>
                                     </constraints>
                                 </imageView>
-                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="TpJ-vX-40O">
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="TpJ-vX-40O">
                                     <rect key="frame" x="36" y="302" width="289" height="44"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HBr-jQ-Xn7" customClass="SingleDigitField" customModule="iPets" customModuleProvider="target">
@@ -63,7 +65,7 @@
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Otv-EP-HA1" customClass="SingleDigitField" customModule="iPets" customModuleProvider="target">
-                                            <rect key="frame" x="81.666666666666657" y="0.0" width="44" height="44"/>
+                                            <rect key="frame" x="49" y="0.0" width="44" height="44"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="44" id="F37-df-i5l"/>
@@ -73,7 +75,7 @@
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qz7-ju-gNS" customClass="SingleDigitField" customModule="iPets" customModuleProvider="target">
-                                            <rect key="frame" x="163.33333333333334" y="0.0" width="44" height="44"/>
+                                            <rect key="frame" x="98" y="0.0" width="44" height="44"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="44" id="NQQ-S0-v2t"/>
@@ -83,11 +85,31 @@
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b5P-Fl-iOM" customClass="SingleDigitField" customModule="iPets" customModuleProvider="target">
-                                            <rect key="frame" x="245" y="0.0" width="44" height="44"/>
+                                            <rect key="frame" x="147" y="0.0" width="44" height="44"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="44" id="FqQ-me-MjR"/>
                                                 <constraint firstAttribute="width" constant="44" id="NV4-4j-kk4"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="58"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bt1-dp-xzo" customClass="SingleDigitField" customModule="iPets" customModuleProvider="target">
+                                            <rect key="frame" x="196" y="0.0" width="44" height="44"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="44" id="BhD-wa-aau"/>
+                                                <constraint firstAttribute="height" constant="44" id="InI-1W-9v8"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="58"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5L8-iZ-397" customClass="SingleDigitField" customModule="iPets" customModuleProvider="target">
+                                            <rect key="frame" x="245" y="0.0" width="44" height="44"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="44" id="ife-i9-mj1"/>
+                                                <constraint firstAttribute="width" constant="44" id="rnQ-YM-bzg"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="58"/>
                                             <textInputTraits key="textInputTraits"/>

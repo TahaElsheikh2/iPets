@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - AuthModel
 struct AuthModel: Codable {
-    var data: DataClass2?
+    var data: AuthModelData?
     var messageCode, message: String?
     var statusCode: Int?
 
@@ -22,12 +22,13 @@ struct AuthModel: Codable {
 }
 
 // MARK: - DataClass
-struct DataClass2: Codable {
+struct AuthModelData: Codable {
     var id: Int?
     var userName, email, type: String?
     var profileImage: String?
     var token: String?
     var longitude, latitude: String?
+    var is_verified: Bool?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -35,5 +36,6 @@ struct DataClass2: Codable {
         case email, type
         case profileImage = "profile_image"
         case token, longitude, latitude
+        case is_verified
     }
 }

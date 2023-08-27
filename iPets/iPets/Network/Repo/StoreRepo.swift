@@ -33,7 +33,7 @@ class StoreRepo {
     /// - Parameter limit: limit
     /// - Parameter pageNumber: pageNumber for pagination
     /// - Parameter completion: completion
-    var storyStore :BaseNetworkStore<[Story]> = BaseNetworkStore()
+    var storyStore :NetworkManager<[Story]> = NetworkManager()
 
     func fetchStoriesByUsername(username: String, limit: Int?, pageNumber: Int, successCompletion: @escaping ([Story]?) -> Void, failureCompletion: @escaping (String) -> Void) {
         let request = StoryRequestBuilder.first

@@ -21,39 +21,54 @@ class TestViewController: UIViewController {
 
 
     @IBAction func countPrimeNumber(_ sender: Any) {
-        
-//        let storyRepo = StoreRepo()
-//        storyRepo.fetchStoriesByUsername(username: "", limit: 3, pageNumber: 2) { model in
-//            print("#### model = \(model?.first?.title)")
-//        } failureCompletion: { errorString in
-//            print("#### errorString = \(errorString)")
-//        }
-        
-//        testFunc.makePostRequest()
-        let registerRepo = RegisterRepo()
-        registerRepo.registerAction(successCompletion: { model in
-            print("#### model.userName = \(model?.data?.userName)")
-            print("#### model type= \(model?.data?.type)")
-            print("#### model token= \(model?.data?.token)")
-            print("#### model email= \(model?.data?.email)")
-            print("#### model id= \(model?.data?.id)")
 
-        }, failureCompletion: { errorString in
-            print("#### errorString = \(errorString)")
+        self.getAllPetsTypes()
 
-        })
-        
-//        testFunc.sampleDownload { data in
-//            guard let data = data else{
-//                print("Data is nil")
-//                return
-//            }
-//            OperationQueue.main.addOperation {
-//                self.setImage(data: data)
-//            }
-//
-//        }
     }
+    
+    func getAllPets()  {
+        let getAllPetsUseCase: GetAllPetsUseCaseProtocol = GetAllPetsUseCase()
+        getAllPetsUseCase.getAllPets { model in
+            
+            print("###!! model.message = \(String(describing: model.message))")
+            print("###!! model.status = \(String(describing: model.status))")
+            print("###!! model.data = \(String(describing: model.data))")
+            print("###!! model.data?.first?.petName = \(String(describing: model.data?.first?.petName))")
+            print("###!! model.data?.first?.gender = \(String(describing: model.data?.first?.gender))")
+            print("###!! model.data?.first?.birthDate = \(String(describing: model.data?.first?.birthDate))")
+            print("###!! model.data?.first?.latestEvent = \(String(describing: model.data?.first?.latestEvent))")
+            print("###!! model.data?.first?.petType = \(String(describing: model.data?.first?.petType))")
+            print("###!! model.data?.first?.proflie = \(String(describing: model.data?.first?.proflie))")
+            print("###!! model.data?.first?.id = \(String(describing: model.data?.first?.id))")
+ 
+
+        } failureCompletion: { error in
+            
+            print("###!! error.errorCode = \(error.errorCode))")
+            print("###!! error.errorDesc = \(error.errorDesc))")
+        }
+    }
+    
+    func getAllPetsTypes(){
+        
+        let getAllPetsUseCase: GetAllPetsTypesUseCaseProtocol = GetAllPetsTypesUseCase()
+        getAllPetsUseCase.getAllPetsTypes { model in
+            
+            print("###!! model.message = \(String(describing: model.message))")
+            print("###!! model.statusCode = \(String(describing: model.statusCode))")
+            print("###!! model.data = \(String(describing: model.data))")
+
+            print("###!! model.data?.count = \(String(describing: model.data?.count))")
+            print("###!! model.data?.type = \(String(describing: model.data?.first?.type))")
+            print("###!! model.data?.id = \(String(describing: model.data?.first?.id))")
+
+        } failureCompletion: { error in
+            
+            print("###!! error.errorCode = \(error.errorCode))")
+            print("###!! error.errorDesc = \(error.errorDesc))")
+        }
+    }
+    
     func setImage(data:Data){
         
         let imageView = UIImageView(frame: CGRect(x: 50, y: 100, width: 100, height: 100))

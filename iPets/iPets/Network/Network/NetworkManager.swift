@@ -1,5 +1,5 @@
 //
-//  BaseNetworkStore.swift
+//  NetworkManager.swift
 //  iPets
 //
 //  Created by Taha on 22/08/2023.
@@ -9,23 +9,66 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class BaseNetworkStore<T: Codable>{
+class NetworkManager<T: Codable>{
     
-    func requestWith(request:ApiRequest, responseHandler: @escaping (T) -> Void)  {
+//    private var tokenManagerUseCase: TokenManagerProtocol
+//    private var tokenManager: TokenManagerProtocol
+
+//    init(tokenManagerUseCase: TokenManagerProtocol = TokenManager(),tokenManager: TokenManagerProtocol = TokenManager()) {
+//        self.tokenManagerUseCase = tokenManagerUseCase
+//        self.tokenManager = tokenManager
+//    }
+    
+    internal func requestWith(request:ApiRequest, successCompletion: @escaping (T) -> Void,failureResponse: @escaping (CustomError) -> Void)  {
        
-        AF.request(request).validate().responseDecodable(of: AuthModel.self) { (response) in
-            print("#### response = \(response)")
-
-          if let value = response.value {
-              print("#### value.data?.email = \(value.data?.email)")
-              responseHandler(value as! T)
-          }else{
-//              responseHandler(ApiResponse(success: false))
-
-          }
+        if request.shouldAuth{
+            self.requestWithAuth(request: request,
+                                 successCompletion: successCompletion,
+                                 failureResponse: failureResponse)
+        }else{
+            self.requestWithoutAuth(request: request,
+                                 successCompletion: successCompletion,
+                                 failureResponse: failureResponse)
         }
     }
     
+    private func requestWithAuth(request:ApiRequest, successCompletion: @escaping (T) -> Void,failureResponse: @escaping (CustomError) -> Void)  {
+        
+        AF.request(request).validate().responseDecodable(of: T.self) { (response) in
+            print("## [Request] : \(String(describing: response.request))")
+            print("## [Response] : \(response.debugDescription)")
+
+          if let value = response.value {
+              successCompletion(value)
+          }else{
+              var error = CustomError()
+              error.errorDesc = response.debugDescription
+              error.errorCode = response.error?.responseCode ?? 999
+              failureResponse(error)
+          }
+        }
+    }
+    private func getToken() -> String{
+        
+        return ""
+    }
+    
+    private func requestWithoutAuth(request:ApiRequest, successCompletion: @escaping (T) -> Void,failureResponse: @escaping (CustomError) -> Void)  {
+        
+        AF.request(request).validate().responseDecodable(of: T.self) { (response) in
+            print("## [Request] : \(String(describing: response.request))")
+            print("## [Response] : \(response.debugDescription)")
+
+          if let value = response.value {
+              successCompletion(value)
+          }else{
+              var error = CustomError()
+              error.errorDesc = response.debugDescription
+              error.errorCode = response.error?.responseCode ?? 999
+              failureResponse(error)
+          }
+        }
+    }
     
     func callApi(request: ApiRequest, responseHandler: @escaping (ApiResponse<T>) -> Void) {
 
@@ -111,4 +154,9 @@ class ApiResponse<T:Codable> {
         self.message = message
         self.data = data
     }
+}
+
+struct CustomError{
+    var errorCode = Int(0)
+    var errorDesc = ""
 }

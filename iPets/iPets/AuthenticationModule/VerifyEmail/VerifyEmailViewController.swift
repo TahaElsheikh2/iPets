@@ -7,9 +7,33 @@
 
 import UIKit
 
+class VerifyEmailViewModel{
+    
+    var useCase : VerifyEmailUseCaseProtocol
+    init(useCase: VerifyEmailUseCaseProtocol = VerifyEmailUseCase()) {
+        self.useCase = useCase
+    }
+    
+    func verifyAction(verifyEmailDTO: VerifyEmailDTO){
+        self.useCase.verifyEmail(verifyEmailDTO: verifyEmailDTO) { model in
+            
+            print("#### model.userName = \(model.data?.userName)")
+            print("#### model type= \(model.data?.type)")
+            print("#### model token= \(model.data?.token)")
+            print("#### model email= \(model.data?.email)")
+            print("#### model id= \(model.data?.id)")
+
+        } failureCompletion: { error in
+            print("#### error.desc = \(error.errorDesc)")
+            print("#### error.errorCode = \(error.errorCode)")
+        }
+    }
+}
+
 class VerifyEmailViewController: UIViewController {
     weak var coordinator: AuthCoordinator?
-
+    let viewModel = VerifyEmailViewModel()
+    
     @IBOutlet weak var verifyMailLabel: UILabel!
     @IBOutlet weak var contentView: RadialGradientView!
     @IBOutlet weak var imageView: UIImageView!
@@ -18,6 +42,8 @@ class VerifyEmailViewController: UIViewController {
     @IBOutlet weak var secondTextField: SingleDigitField!
     @IBOutlet weak var thirdTextField: SingleDigitField!
     @IBOutlet weak var fourthTextField: SingleDigitField!
+    @IBOutlet weak var fifthTextField: SingleDigitField!
+    @IBOutlet weak var sixthTextField: SingleDigitField!
     @IBOutlet weak var counterLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var resendButton: UIButton!
@@ -57,6 +83,14 @@ class VerifyEmailViewController: UIViewController {
                         thirdTextField.isUserInteractionEnabled = true
                         thirdTextField.becomeFirstResponder()
                         thirdTextField.text = ""
+                    case fifthTextField:
+                        fourthTextField.isUserInteractionEnabled = true
+                        fourthTextField.becomeFirstResponder()
+                        fourthTextField.text = ""
+                    case sixthTextField:
+                        fifthTextField.isUserInteractionEnabled = true
+                        fifthTextField.becomeFirstResponder()
+                        fifthTextField.text = ""
                     default:
                         break
                     }
@@ -83,6 +117,12 @@ class VerifyEmailViewController: UIViewController {
             case thirdTextField:
                 fourthTextField.isUserInteractionEnabled = true
                 fourthTextField.becomeFirstResponder()
+            case fourthTextField:
+                fifthTextField.isUserInteractionEnabled = true
+                fifthTextField.becomeFirstResponder()
+            case fifthTextField:
+                sixthTextField.isUserInteractionEnabled = true
+                sixthTextField.becomeFirstResponder()
             default: break
             }
         case fourthTextField:
@@ -93,7 +133,25 @@ class VerifyEmailViewController: UIViewController {
     }
     
     func verify() {
+        let code = self.getVerificationCode()
+        
+        var  verifyEmailDTO = VerifyEmailDTO()
+        verifyEmailDTO.code = code
+        print("## verify code = \(code)")
+        self.viewModel.verifyAction(verifyEmailDTO: verifyEmailDTO)
         print("verify")
+    }
+    
+    func getVerificationCode() -> String {
+        
+        var verificationCode = firstTextField.text ?? ""
+        verificationCode += secondTextField.text ?? ""
+        verificationCode += thirdTextField.text ?? ""
+        verificationCode += fourthTextField.text ?? ""
+        verificationCode += fifthTextField.text ?? ""
+        verificationCode += sixthTextField.text ?? ""
+
+        return verificationCode
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

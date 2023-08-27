@@ -165,8 +165,10 @@ extension TestFuncs{
     }
     
     func makePostRequest() {
-        
-        var request = RegisterRequest.Register
+      
+        let model = RegisterModel(name: "Taha",password: "12345678",email: "tahaelsheikh22@gmail.com",phone: "0101679")
+
+        var request = RegisterRequest.Register(model: model)
         
 
         AF.request(request).validate().responseDecodable(of: AuthModel.self) { (response) in

@@ -13,16 +13,21 @@ protocol ApiRequest :URLRequestConvertible{
     var path: String {get}
     var headers: [String:String]? {get}
     var parameters: [String:Any]? {get}
+    var shouldAuth : Bool {get}
     var method: HTTPMethod { get }
+    var token: TokenManagerProtocol {get}
     func body() throws -> Data?
+
 }
 
 extension ApiRequest{
+
+    
     var baseURL:String {
         #if DEBUG
-        return "https://run.mocky.io/"
+        return "http://18.234.38.208:8000"
         #else
-        return "https://run.mocky.io/"
+        return "http://18.234.38.208:8000"
         #endif
     }
 
@@ -55,13 +60,24 @@ extension ApiRequest{
         return nil
     }
     
+    var token: TokenManagerProtocol {
+        
+        return TokenManager()
+    }
+    
     func asURLRequest() throws -> URLRequest {
         let url = URL(string: baseURL)!
 
         var urlRequest = URLRequest(url: url.appendingPathComponent(path))
         urlRequest.method = method
         urlRequest.headers = HTTPHeaders(self.headers ?? [:])
-
+       
+        if shouldAuth {
+            urlRequest.setValue("Bearer \(self.token.getCachedToken())",
+            forHTTPHeaderField: "Authorization")
+        }
+        print("didEnter asURLRequest Func")
+        
         switch method {
         case .post,.patch,.put:
             if var param = parameters {
@@ -99,30 +115,7 @@ extension ApiRequest{
         return urlRequest
     }
 }
-//
-//public enum HTTPMethod: String {
-//    case options = "OPTIONS"
-//    case get     = "GET"
-//    case head    = "HEAD"
-//    case post    = "POST"
-//    case put     = "PUT"
-//    case patch   = "PATCH"
-//    case delete  = "DELETE"
-//    case trace   = "TRACE"
-//    case connect = "CONNECT"
-//}
 
-
-public protocol ApiBaseRouter  {
-    var isAuth: Bool { get }
-    var shouldAuth: Bool { get }
-    var baseUrl: String? { get }
-    var path: String { get }
-    var method: HTTPMethod { get }
-    var headers: [String:String]? { get }
-    var parameters: [String:Any]? { get }
-    func body() throws -> Data?
-}
 
 //extension ApiBaseRouter {
 //    var isAuth: Bool {

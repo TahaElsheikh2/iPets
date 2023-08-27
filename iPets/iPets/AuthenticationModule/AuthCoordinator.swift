@@ -1,9 +1,10 @@
 //
 //  AuthCoordinator.swift
-//  NavigationDemo
+//  iPets
 //
-//  Created by Samuel Samir on 14/06/2023.
+//  Created by Taha on 27/08/2023.
 //
+
 
 import UIKit
 

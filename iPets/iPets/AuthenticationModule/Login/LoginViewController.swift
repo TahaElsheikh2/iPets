@@ -13,8 +13,34 @@ protocol LoginViewModelProtocol {
 
 class LoginViewModel:LoginViewModelProtocol {
     weak var coordinator: AuthCoordinator?
-    init(coordinator: AuthCoordinator) {
+    var loginUseCase : LoginUseCaseProtocol
+    
+    init(coordinator: AuthCoordinator,loginUseCase : LoginUseCaseProtocol = LoginUseCase()) {
         self.coordinator = coordinator
+        self.loginUseCase = loginUseCase
+    }
+    
+    func loginAction(loginModel:LoginModelDTO, successCompletion:@escaping (AuthModel) -> Void, failureCompletion:@escaping (CustomError) -> Void) {
+        
+        self.loginUseCase.login(loginModelDTO: loginModel) {[weak self] model in
+            
+            guard let self = self else{
+                return
+            }
+            
+            print("####$ LoginViewModel LoginAction Success with Token = \(String(describing: model.data?.token))")
+            successCompletion(model)
+            self.goToHome()
+            
+        } failureCompletion: { error in
+            print("####$ LoginViewModel LoginAction error")
+            failureCompletion(error)
+        }
+
+    }
+    
+    func goToHome() {
+        coordinator?.navigate(withKey: AuthCoordinatorKeys.TestViewController.rawValue, andNavigationType: .push)
     }
     
     func gotoRegisterViewController(){
@@ -23,9 +49,6 @@ class LoginViewModel:LoginViewModelProtocol {
     
     func gotoResetPasswordVC(){
         coordinator?.navigate(withKey: AuthCoordinatorKeys.resetPassword.rawValue, andNavigationType: .push)
-    }
-    func loginAction()  {
-        coordinator?.navigate(withKey: AuthCoordinatorKeys.TestViewController.rawValue, andNavigationType: .push)
     }
 }
 
@@ -44,18 +67,37 @@ class LoginViewController: UIViewController ,OnboardingViewDelegate {
 
     
     @IBAction func loginAction(_ sender: Any) {
-        viewModel?.loginAction()
+        
+        guard let email = userNameTextField.text else {
+            print("email = nil")
+            return
+        }
+        
+        guard let password = passwordTextField.text else {
+            print("password = nil")
+            return
+        }
+        viewModel?.loginAction(loginModel: LoginModelDTO(email: email,password: password), successCompletion: { model in
+
+        }, failureCompletion:{ error in
+            print("####$ LoginViewController LoginAction error")
+        })
     }
     
     @IBAction func forgetPasswordAction(_ sender: Any) {
         viewModel?.gotoResetPasswordVC()
     }
+
     @IBAction func gmailAction(_ sender: Any) {
+        viewModel?.goToHome()
     }
+    
     @IBAction func facebookAction(_ sender: Any) {
     }
+    
     @IBAction func appleAction(_ sender: Any) {
     }
+    
     @IBAction func createAccountAction(_ sender: Any) {
         viewModel?.gotoRegisterViewController()
     }
