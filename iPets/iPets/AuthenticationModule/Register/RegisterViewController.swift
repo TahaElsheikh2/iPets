@@ -6,47 +6,12 @@
 //
 
 import UIKit
-struct RegisterPresentationModel {
-    var userName : String?
-    var mail : String?
-    var phone : String?
-    var password : String?
-    var confirmPassword : String?
-}
-
-class RegisterViewModel {
-    func registerAction(model:RegisterPresentationModel, success:() -> Void, failure: () -> Void) {
-        let registerUseCase: RegisterUseCaseProtocol = RegisterUseCase()
-        
-        let registerModel = getModel(registerPresentationModel: model)
-        registerUseCase.registerWith(registerModel: registerModel, successCompletion: { model in
-            print("#### model.userName = \(model.data?.userName)")
-            print("#### model type= \(model.data?.type)")
-            print("#### model token= \(model.data?.token)")
-            print("#### model email= \(model.data?.email)")
-            print("#### model id= \(model.data?.id)")
-
-        }, failureCompletion: { error in
-            print("#### error.desc = \(error.errorDesc)")
-            print("#### error.errorCode = \(error.errorCode)")
-
-        })
-    }
-    
-    func getModel(registerPresentationModel:RegisterPresentationModel) -> RegisterModel {
-        
-        let registerModel = RegisterModel(name: registerPresentationModel.userName!,
-                                          password: registerPresentationModel.password!,
-                                          email: registerPresentationModel.mail!,
-                                          phone: registerPresentationModel.phone!)
-        return registerModel
-    }
-}
-
+import Combine
 class RegisterViewController: UIViewController {
     weak var coordinator: AuthCoordinator?
     let viewModel = RegisterViewModel()
-    
+    var cancelable = Set<AnyCancellable>()
+
     @IBOutlet weak var createAccountLabel: UILabel!
     @IBOutlet weak var contentView: RadialGradientView!
     @IBOutlet weak var userNameTextField: UITextField!
@@ -72,6 +37,24 @@ class RegisterViewController: UIViewController {
         setNavigationItem()
     }
 
+    func setupSubscription(){
+    
+        viewModel.resultSubject.sink { complete in
+            switch complete{
+            case .finished:
+                print("finished")
+                self.navigateToVerifyEmailPage()
+            case .failure(let error):
+                self.showError(error:error)
+            }
+        } receiveValue: { model in
+            print("receiveValue = \(model)")
+        }.store(in: &cancelable)
+
+    }
+    func showError(error:IPETSErrors) {
+        
+    }
     func setupUI() {
         
         userNameTextField.setupLeftImage(imageName: "userTextField")
@@ -88,12 +71,30 @@ class RegisterViewController: UIViewController {
     @IBAction func registerAction(_ sender: Any) {
         let model = getRegisterModel()
         
-        self.viewModel.registerAction(model: model) {
-            print("###$$ viewModel registerAction Success")
-            self.navigateToVerifyEmailPage()
-        } failure: {
-            print("###$$ viewModel registerAction failure")
-        }
+        self.viewModel.registerAction(model: model)
+            .receive(on: DispatchQueue.main)
+            .debounce(for: .seconds(1.0), scheduler: DispatchQueue.main)
+            .sink {[weak self] complete in
+                switch complete{
+                case .finished:
+                    self?.handleSuccess()
+                    print("finished")
+                case .failure(let error):
+                    self?.handleFailure(error: error)
+                    print("error = \(error.localizedDescription)")
+                }
+            } receiveValue: {[weak self] model in
+                print("receiveValue model = \(model)")
+            }
+            .store(in: &cancelable)
+    }
+    
+    func handleSuccess() {
+        self.navigateToVerifyEmailPage()
+    }
+    
+    func handleFailure(error:IPETSErrors) {
+        self.showAlert(title: "oops", message: error.localizedDescription, actionTitle: "Ok")
     }
     
     func getRegisterModel() -> RegisterPresentationModel {

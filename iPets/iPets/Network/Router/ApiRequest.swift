@@ -73,6 +73,7 @@ extension ApiRequest{
         urlRequest.headers = HTTPHeaders(self.headers ?? [:])
        
         if shouldAuth {
+            print("didEnter asURLRequest shouldAuth self.token.getCachedToken() = \(self.token.getCachedToken())")
             urlRequest.setValue("Bearer \(self.token.getCachedToken())",
             forHTTPHeaderField: "Authorization")
         }
@@ -80,11 +81,11 @@ extension ApiRequest{
         
         switch method {
         case .post,.patch,.put:
-            if var param = parameters {
+            if let param = parameters {
                 urlRequest = try URLEncoding.default.encode(urlRequest, with: param)
             }
 
-            if var headers = headers {
+            if let headers = headers {
                 urlRequest.headers = HTTPHeaders(headers)
             }
 
@@ -93,20 +94,20 @@ extension ApiRequest{
             }
 
         case .get:
-            if var param = parameters {
+            if let param = parameters {
                urlRequest =  try URLEncoding.default.encode(urlRequest, with: param)
             }
 
-            if var headers = headers {
+            if let headers = headers {
                 urlRequest.headers = HTTPHeaders(headers)
             }
 
         case .delete:
-            if var param = parameters {
+            if let param = parameters {
                urlRequest =  try URLEncoding.default.encode(urlRequest, with: param)
             }
 
-            if var headers = headers {
+            if let headers = headers {
                 urlRequest.headers = HTTPHeaders(headers)
             }
         default:

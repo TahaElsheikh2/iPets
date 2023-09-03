@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import Combine
 protocol VerifyEmailUseCaseProtocol {
-    func verifyEmail(verifyEmailDTO:VerifyEmailDTO, successCompletion:@escaping (AuthModel) -> Void, failureCompletion:@escaping (CustomError) -> Void)
+    func legacyVerifyEmail(verifyEmailDTO:VerifyEmailDTO, successCompletion:@escaping (AuthModelDTO) -> Void, failureCompletion:@escaping (CustomError) -> Void)
+    func verifyEmail(verifyEmailDTO:VerifyEmailDTO) -> AnyPublisher<AuthModel,IPETSErrors>
 }
 
 class VerifyEmailUseCase: VerifyEmailUseCaseProtocol {
@@ -18,9 +20,10 @@ class VerifyEmailUseCase: VerifyEmailUseCaseProtocol {
         self.repo = repo
     }
     
-    func verifyEmail(verifyEmailDTO:VerifyEmailDTO, successCompletion:@escaping (AuthModel) -> Void, failureCompletion:@escaping (CustomError) -> Void) {
+    //TODO: Delete legacy
+    func legacyVerifyEmail(verifyEmailDTO:VerifyEmailDTO, successCompletion:@escaping (AuthModelDTO) -> Void, failureCompletion:@escaping (CustomError) -> Void) {
         
-        self.repo.verifyEmail(verifyEmailDTO: verifyEmailDTO) { model in
+        self.repo.legacyVerifyEmail(verifyEmailDTO: verifyEmailDTO) { model in
           
             guard let authModel = model else{
                 
@@ -33,4 +36,24 @@ class VerifyEmailUseCase: VerifyEmailUseCaseProtocol {
             failureCompletion(error)
         }
     }
+    
+    func verifyEmail(verifyEmailDTO:VerifyEmailDTO) -> AnyPublisher<AuthModel,IPETSErrors>{
+        
+        return self.repo.verifyEmail(verifyEmailDTO: verifyEmailDTO).tryMap{ model in
+            if let model = model{
+                return AuthModelMapper.getAuthModel(authModelDTO: model)
+            }else{
+                throw IPETSErrors.nilModel
+            }
+        }
+        .mapError{error -> IPETSErrors in
+            
+            if let error = error as? IPETSErrors{
+                return error
+            }else{
+                return IPETSErrors.mappingErrorToNetworkError
+            }
+        }.eraseToAnyPublisher()
+    }
 }
+

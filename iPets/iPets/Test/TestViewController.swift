@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Combine
 class TestViewController: UIViewController {
     weak var coordinator: AuthCoordinator?
 
@@ -19,10 +19,59 @@ class TestViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    var authUseCase = AuthUseCase()
+    private var cancellableSet: Set<AnyCancellable> = []
 
     @IBAction func countPrimeNumber(_ sender: Any) {
-
+      
+        self.checkToken()
+        print("--------------------------------------------------------------- \n")
         self.getAllPetsTypes()
+//        self.authUseCase.reAuth().sink(receiveCompletion: {result in
+//            print("result = \(result)")
+//        }, receiveValue: {model in
+//            print("authUseCase model = \(model)")
+//
+//        }).store(in: &cancellableSet)
+    }
+    
+    func tets() {
+        
+        var loader = "".publisher
+
+        _ = loader.sink(receiveCompletion: { completion in
+            
+            switch completion{
+            case .finished:
+                print("")
+            case .failure(let error):
+                print("error = \(error)")
+            }
+        }, receiveValue: { value in
+            print(" value = \(value)")
+        })
+//        loader = "taha"
+//        loader = "mohamed"
+        let fibonacciPublisher = [0,1,1,2,3,5].publisher
+        _ = fibonacciPublisher.sink(receiveCompletion: { completion in
+            switch completion {
+                case .finished:
+                    print("finished")
+                case .failure(let never):
+                    print(never)
+            }
+        }, receiveValue: { value in
+            print(value)
+        })
+    }
+
+    func checkToken() {
+    
+        
+        print("###!! checkToken TokenManager().getCachedToken() = \(TokenManager().getCachedToken()))")
+        print("###!! checkToken TokenManager().isValidToken() = \(TokenManager().isValidToken()))")
+        print("###!! checkToken CacheManager().Email_Constant() = \(CacheHandler.getStringFromKeychain(forKey: CacheConstants.Email_Constant)))")
+        print("###!! checkToken CacheManager().Password_Constant() = \(CacheHandler.getStringFromKeychain(forKey: CacheConstants.Password_Constant)))")
 
     }
     
@@ -48,10 +97,10 @@ class TestViewController: UIViewController {
             print("###!! error.errorDesc = \(error.errorDesc))")
         }
     }
-    
+    let getAllPetsUseCase: GetAllPetsTypesUseCaseProtocol = GetAllPetsTypesUseCase()
+
     func getAllPetsTypes(){
         
-        let getAllPetsUseCase: GetAllPetsTypesUseCaseProtocol = GetAllPetsTypesUseCase()
         getAllPetsUseCase.getAllPetsTypes { model in
             
             print("###!! model.message = \(String(describing: model.message))")

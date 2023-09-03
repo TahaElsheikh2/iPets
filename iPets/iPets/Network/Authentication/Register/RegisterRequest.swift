@@ -34,6 +34,10 @@ extension RegisterRequest:ApiRequest{
         return .post
     }
     
+    var shouldAuth: Bool{
+        return false
+    }
+    
     var parameters: [String : Any]? {
         switch self{
         case .Register(let model):

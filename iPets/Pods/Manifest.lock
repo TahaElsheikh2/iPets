@@ -1,11 +1,13 @@
 PODS:
   - Alamofire (5.7.1)
+  - CombineExt (1.8.0)
   - JWTDecode (3.1.0)
   - Runtime (2.2.2)
   - SwiftyJSON (5.0.1)
 
 DEPENDENCIES:
   - Alamofire
+  - CombineExt
   - JWTDecode (~> 3.1)
   - Runtime
   - SwiftyJSON
@@ -13,16 +15,18 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
+    - CombineExt
     - JWTDecode
     - Runtime
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 0123a34370cb170936ae79a8df46cc62b2edeb88
+  CombineExt: c4daa97ef75754d8ef319bd79edeef82652f3eea
   JWTDecode: 3eaab1e06b6f4dcbdd6716aff09ba4c2104ca8b7
   Runtime: 67741bd196fb4ad821c4d259ccc527bf734d8806
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: 80044a473f0a2b3a5075cf5ae5455f913206ccf7
+PODFILE CHECKSUM: f2471c62f2a3cc2ab75d8c6701fb99702c3d8f6a
 
 COCOAPODS: 1.11.2

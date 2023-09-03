@@ -33,7 +33,6 @@ class AuthCoordinator: Coordinator {
     
     func backFromRegisterViewController(data: String) {
         if let topViewController = navigationController.topViewController  as? LoginViewController{
-            topViewController.messageLabel.text = data
         }
     }
 }

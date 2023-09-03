@@ -33,20 +33,20 @@ class StoreRepo {
     /// - Parameter limit: limit
     /// - Parameter pageNumber: pageNumber for pagination
     /// - Parameter completion: completion
-    var storyStore :NetworkManager<[Story]> = NetworkManager()
+//    var storyStore :NetworkManager<[Story]> = NetworkManager()
 
-    func fetchStoriesByUsername(username: String, limit: Int?, pageNumber: Int, successCompletion: @escaping ([Story]?) -> Void, failureCompletion: @escaping (String) -> Void) {
-        let request = StoryRequestBuilder.first
-        
-        storyStore.callApi(request: request) { (apiResponse) in
-            if apiResponse.success {
-                successCompletion(apiResponse.data)
-                print("fetchStoriesByUsername Success = \(apiResponse.data)")
-            } else {
-                failureCompletion(apiResponse.message ?? "error")
-                print("fetchStoriesByUsername Failer = \(apiResponse.message)")
-            }
-        }
-    }
+//    func fetchStoriesByUsername(username: String, limit: Int?, pageNumber: Int, successCompletion: @escaping ([Story]?) -> Void, failureCompletion: @escaping (String) -> Void) {
+//        let request = StoryRequestBuilder.first
+//
+//        storyStore.callApi(request: request) { (apiResponse) in
+//            if apiResponse.success {
+//                successCompletion(apiResponse.data)
+//                print("fetchStoriesByUsername Success = \(apiResponse.data)")
+//            } else {
+//                failureCompletion(apiResponse.message ?? "error")
+//                print("fetchStoriesByUsername Failer = \(apiResponse.message)")
+//            }
+//        }
+//    }
 
 }

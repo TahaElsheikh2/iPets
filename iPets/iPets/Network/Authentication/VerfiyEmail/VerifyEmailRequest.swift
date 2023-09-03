@@ -9,6 +9,7 @@ import Foundation
 import Alamofire
 
 let VerifyEmailEndPoint = "/api/auth/verify-email/"
+let ResendVerifyCodeEndPoint = "/api/auth/resend-verify-email"
 
 struct VerifyEmailDTO{
     var code = ""
@@ -16,6 +17,7 @@ struct VerifyEmailDTO{
 enum VerifyEmailRequest {
     
     case VerifyEmail(model:VerifyEmailDTO)
+    case ResendVerifyCode
 }
 
 extension VerifyEmailRequest:ApiRequest{
@@ -25,7 +27,9 @@ extension VerifyEmailRequest:ApiRequest{
         switch self
         {
         case .VerifyEmail(let model):
-            return RegisterEndPoint + model.code
+            return VerifyEmailEndPoint + model.code
+        case .ResendVerifyCode:
+            return ResendVerifyCodeEndPoint
         }
     }
     

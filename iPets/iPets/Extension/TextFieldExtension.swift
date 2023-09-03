@@ -34,4 +34,47 @@ extension UITextField {
         self.tintColor = .lightGray
     }
     
+     func showHintView(hintString:String) {
+         
+         
+         let xPoint = self.frame.origin.x
+         let yPoint = self.frame.origin.y + self.frame.size.height + 2
+         let width = self.frame.size.width
+         
+         let errorView = UIView(frame: CGRect(x: xPoint, y: yPoint, width: width, height: 12))
+
+         let label = UILabel(frame: CGRect(x: 17, y: 0, width: width - 17, height: 12))
+         
+         label.text = hintString
+         label.font = UIFont.systemFont(ofSize: 12)
+         label.adjustsFontSizeToFitWidth = true
+         label.numberOfLines = 1
+         label.textColor = .red
+         label.backgroundColor = .clear
+         label.clipsToBounds = true
+         
+         errorView.addSubview(label)
+
+         let imgView = UIImageView(frame: CGRect(x: 0, y: 0, width: 12, height: 12))
+         
+         imgView.image = UIImage(named: "error_icon")
+         imgView.contentMode = .scaleAspectFit
+         errorView.addSubview(imgView)
+         
+         self.superview?.addSubview(errorView)
+     }
+     
+     func showError(borderColor:UIColor = .red,borderWidth:CGFloat = CGFloat(1)){
+         
+         self.layer.borderWidth = borderWidth
+         self.layer.borderColor = borderColor.cgColor
+         self.layer.cornerRadius = 8
+         
+     }
+     
+     func showErrorWithHint(hintString:String,borderColor:UIColor = .red,borderWidth:CGFloat = CGFloat(1)) {
+         
+         self.showHintView(hintString: hintString)
+         self.showError(borderColor:borderColor, borderWidth: borderWidth)
+     }
 }

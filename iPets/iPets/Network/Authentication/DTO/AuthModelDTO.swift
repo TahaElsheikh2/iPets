@@ -1,5 +1,5 @@
 //
-//  AuthModel.swift
+//  AuthModelDTO.swift
 //  iPets
 //
 //  Created by Taha on 26/08/2023.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-// MARK: - AuthModel
-struct AuthModel: Codable {
+// MARK: - AuthModelDTO
+struct AuthModelDTO: Codable {
     var data: AuthModelData?
     var messageCode, message: String?
     var statusCode: Int?

@@ -171,7 +171,7 @@ extension TestFuncs{
         var request = RegisterRequest.Register(model: model)
         
 
-        AF.request(request).validate().responseDecodable(of: AuthModel.self) { (response) in
+        AF.request(request).validate().responseDecodable(of: AuthModelDTO.self) { (response) in
             print("#### response = \(response)")
 
           if let value = response.value {

@@ -6,21 +6,38 @@
 //
 
 import Foundation
+import Combine
 
 class RegisterStore{
     
-    let networkManager: NetworkManager<AuthModel> = NetworkManager()
+    private let networkManager: NetworkManager<AuthModelDTO> = NetworkManager()
+    private var cancellableSet: Set<AnyCancellable> = []
     
-    func registerAction(registerModel:RegisterModel, successCompletion: @escaping (AuthModel?) -> Void, failureCompletion: @escaping (CustomError) -> Void) {
-
+    //TODO: Delete Legacy code
+    func legacyRegisterAction(registerModel:RegisterModel, successCompletion: @escaping (AuthModelDTO?) -> Void, failureCompletion: @escaping (CustomError) -> Void){
+        
         let request = RegisterRequest.Register(model: registerModel)
         
-        networkManager.requestWith(request: request) { model in
-            successCompletion(model)
-        } failureResponse: { error in
-            
-            failureCompletion(ErrorHandler.getError(error:error))
-        }
+        networkManager.callApi(request: request)
+            .sink(receiveCompletion: { result in
+                switch result {
+                case .finished:
+                    print("### finished = \(result)")
+                case .failure(let error):
+                    print("### error = \(error)")
+                    failureCompletion(CustomError())
+                }
+            }, receiveValue: {model in
+                print("### receive Value = \(model)")
+                successCompletion(model)
+            }).store(in: &cancellableSet)
+    }
+    
+    func registerAction(registerModel:RegisterModel) -> AnyPublisher<AuthModelDTO?,IPETSErrors>{
+     
+        let request = RegisterRequest.Register(model: registerModel)
+        
+        return networkManager.callApi(request: request)
     }
 }
 

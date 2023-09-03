@@ -24,7 +24,7 @@ struct CacheHandler {
         SecItemDelete(query as CFDictionary)
         
         let status = SecItemAdd(query as CFDictionary, nil)
-        if status == errSecSuccess{
+        if !(status == errSecSuccess){
             print("error while saving \(key) CacheHandler status is false")
         }
     }
@@ -64,6 +64,28 @@ struct CacheHandler {
         } else {
             return nil
         }
+    }
+    
+    static func deleteStringFromKeychain(forKey key: String) {
+        let query: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrAccount as String: key
+        ]
+        
+        let status = SecItemDelete(query as CFDictionary)
+        if !(status == errSecSuccess || status == errSecItemNotFound){
+            print("error while deleting \(key) CacheHandler status is false")
+        }
+    }
+    
+    static func isDeleteStringFromKeychain(forKey key: String) -> Bool {
+        let query: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrAccount as String: key
+        ]
+        
+        let status = SecItemDelete(query as CFDictionary)
+        return status == errSecSuccess || status == errSecItemNotFound
     }
 
 }

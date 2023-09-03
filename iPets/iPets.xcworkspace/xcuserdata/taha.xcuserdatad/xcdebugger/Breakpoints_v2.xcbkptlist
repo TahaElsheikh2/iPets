@@ -71,22 +71,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "BD38A094-A95A-4458-9D2B-4B72831035C7"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iPets/AuthenticationModule/Login/LoginViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "loginAction(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "955839A3-BBF2-45DC-BBC3-D2516AE7A30D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -327,14 +311,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "1CCBBA3B-C503-4FAA-A2BB-31A6A486D6CC"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iPets/Network/Router/ApiRequest.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "asURLRequest()"
             landmarkType = "7">
          </BreakpointContent>
@@ -342,49 +326,289 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E738D3B9-5A76-4E7B-8770-30E4CE02E246"
+            uuid = "99E04D1A-B618-4DE8-8973-1FE0BB69DE75"
             shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iPets/Network/Network/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "reAuth()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "99E04D1A-B618-4DE8-8973-1FE0BB69DE75 - 77403f6330d3601a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iPets.CustomError.init() -&gt; iPets.CustomError"
+                  moduleName = "iPets"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/taha/iPets/iPets/iPets/iPets/Network/Network/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "99E04D1A-B618-4DE8-8973-1FE0BB69DE75 - 39f2450645479677"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iPets.NetworkManager.reAuth() -&gt; Combine.AnyPublisher&lt;Swift.Optional&lt;iPets.AuthModelDTO&gt;, iPets.IPETSErrors&gt;"
+                  moduleName = "iPets"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/taha/iPets/iPets/iPets/iPets/Network/Network/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2284B027-DED9-41EC-A669-009E2D8F2CDD"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iPets/AuthenticationModule/Register/RegisterViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "registerAction(model:success:failure:)"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "handleSuccess()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "E738D3B9-5A76-4E7B-8770-30E4CE02E246 - 63a1feccfff3f4a8"
+                  uuid = "2284B027-DED9-41EC-A669-009E2D8F2CDD - c391f9af082ab454"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "iPets.RegisterViewModel.registerAction(model: iPets.RegisterPresentationModel, success: () -&gt; (), failure: () -&gt; ()) -&gt; ()"
+                  symbolName = "iPets.RegisterViewController.handleSuccess(authMode: iPets.AuthModel) -&gt; ()"
                   moduleName = "iPets"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/taha/iPets/iPets/iPets/iPets/AuthenticationModule/Register/RegisterViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "22"
-                  endingLineNumber = "22"
-                  offsetFromSymbolStart = "176">
+                  startingLineNumber = "93"
+                  endingLineNumber = "93"
+                  offsetFromSymbolStart = "32">
                </Location>
                <Location
-                  uuid = "E738D3B9-5A76-4E7B-8770-30E4CE02E246 - e4fa02bce11053c4"
+                  uuid = "2284B027-DED9-41EC-A669-009E2D8F2CDD - 5537fada49c1e9f4"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (iPets.AuthModel) -&gt; () in iPets.RegisterViewModel.registerAction(model: iPets.RegisterPresentationModel, success: () -&gt; (), failure: () -&gt; ()) -&gt; ()"
+                  symbolName = "iPets.RegisterViewController.handleSuccess() -&gt; ()"
                   moduleName = "iPets"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/taha/iPets/iPets/iPets/iPets/AuthenticationModule/Register/RegisterViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "22"
-                  endingLineNumber = "22"
-                  offsetFromSymbolStart = "0">
+                  startingLineNumber = "93"
+                  endingLineNumber = "93"
+                  offsetFromSymbolStart = "24">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6EFF2913-E4F2-4F1C-B259-BC2342A4F169"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iPets/Network/Network/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "performRequest(request:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6EFF2913-E4F2-4F1C-B259-BC2342A4F169 - 6f62dc751830d951"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 ((Swift.Result&lt;Swift.Optional&lt;&#x3c4;_0_0&gt;, iPets.IPETSErrors&gt;) -&gt; ()) -&gt; () in iPets.NetworkManager.performRequest(request: iPets.ApiRequest) -&gt; Combine.AnyPublisher&lt;Swift.Optional&lt;&#x3c4;_0_0&gt;, iPets.IPETSErrors&gt;"
+                  moduleName = "iPets"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/taha/iPets/iPets/iPets/iPets/Network/Network/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "708">
+               </Location>
+               <Location
+                  uuid = "6EFF2913-E4F2-4F1C-B259-BC2342A4F169 - b92a1a91e9f1d0bf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Swift.Optional&lt;&#x3c4;_0_0&gt;, Alamofire.AFError&gt;) -&gt; () in closure #1 ((Swift.Result&lt;Swift.Optional&lt;&#x3c4;_0_0&gt;, iPets.IPETSErrors&gt;) -&gt; ()) -&gt; () in iPets.NetworkManager.performRequest(request: iPets.ApiRequest) -&gt; Combine.AnyPublisher&lt;Swift.Optional&lt;&#x3c4;_0_0&gt;, iPets.IPETSErrors&gt;"
+                  moduleName = "iPets"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/taha/iPets/iPets/iPets/iPets/Network/Network/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "2804">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CF1312B1-8633-4F44-85AF-7D2021906161"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iPets/Network/Authentication/VerfiyEmail/VerifyEmailRepo.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "verifyEmail(verifyEmailDTO:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AC7E8C2A-8135-4A72-A597-2B50574BF1CA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iPets/Network/Authentication/VerfiyEmail/VerifyEmailRepo.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "verifyEmail(verifyEmailDTO:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B72B03C1-C2A3-4A51-875A-671486884C9C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iPets/Network/Authentication/VerfiyEmail/VerifyEmailRepo.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "verifyEmail(verifyEmailDTO:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7B931543-81AC-4A8F-BB70-8592CA42DDC7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iPets/Network/Authentication/VerfiyEmail/VerifyEmailRepo.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "verifyEmail(verifyEmailDTO:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "114D7F0D-D425-4A11-8E98-6729EB088AD8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iPets/Network/Authentication/VerfiyEmail/VerifyEmailRepo.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "verifyEmail(verifyEmailDTO:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C139E26D-7EE9-404C-91C8-94F7B58E9AED"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iPets/Network/Authentication/VerfiyEmail/VerifyEmailRepo.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "verifyEmail(verifyEmailDTO:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "13D16B35-45F1-4AC6-B0F5-E2AB9C340ED1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iPets/Network/Network/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "performRequest(request:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CF459A92-4F32-405E-B7D6-0F7CD932EF96"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iPets/AuthenticationModule/VerifyEmail/VerifyEmailViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "startCountdown()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4BC8C23E-EAAD-4C5D-97FC-72BE00FE549A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iPets/AuthenticationModule/VerifyEmail/VerifyEmailViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "startCountdown()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

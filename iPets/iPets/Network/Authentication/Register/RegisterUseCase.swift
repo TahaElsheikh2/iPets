@@ -6,8 +6,11 @@
 //
 
 import Foundation
+import Combine
+
 protocol RegisterUseCaseProtocol {
-    func registerWith(registerModel:RegisterModel, successCompletion:@escaping (AuthModel) -> Void, failureCompletion:@escaping (CustomError) -> Void)
+    func legacyRegisterWith(registerModel:RegisterModel, successCompletion:@escaping (AuthModelDTO) -> Void, failureCompletion:@escaping (CustomError) -> Void)
+    func registerWith(registerModel:RegisterModel) -> AnyPublisher<AuthModel,IPETSErrors>
 }
 
 class RegisterUseCase: RegisterUseCaseProtocol {
@@ -18,9 +21,10 @@ class RegisterUseCase: RegisterUseCaseProtocol {
         self.repo = repo
     }
     
-    func registerWith(registerModel:RegisterModel, successCompletion:@escaping (AuthModel) -> Void, failureCompletion:@escaping (CustomError) -> Void) {
+    //TODO: Delete Legacy code
+    func legacyRegisterWith(registerModel:RegisterModel, successCompletion:@escaping (AuthModelDTO) -> Void, failureCompletion:@escaping (CustomError) -> Void) {
         
-        self.repo.registerAction(registerModel: registerModel) { model in
+        self.repo.legacyRegisterAction(registerModel: registerModel) { model in
           
             guard let authModel = model else{
                 
@@ -32,5 +36,13 @@ class RegisterUseCase: RegisterUseCaseProtocol {
         } failureCompletion: { error in
             failureCompletion(error)
         }
+    }
+    
+    func registerWith(registerModel:RegisterModel) -> AnyPublisher<AuthModel,IPETSErrors> {
+        
+        return self.repo.registerAction(registerModel: registerModel).map{ model -> AuthModel in
+            
+            AuthModelMapper.getAuthModel(authModelDTO: model)
+        }.eraseToAnyPublisher()
     }
 }
