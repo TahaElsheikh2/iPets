@@ -146,7 +146,7 @@ extension VerifyEmailViewController{
     
     func subscribeOnTimer() {
         
-        self.viewModel.timerSubject
+        self.viewModel.timerPublisher
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: {timeValue in
             
@@ -155,8 +155,7 @@ extension VerifyEmailViewController{
     }
     
     func subscribeOnTimerLabelIsEnabledFlag() {
-        
-        self.viewModel.timerLabelIsEnabledFlagSubject
+        self.viewModel.timerLabelIsEnabledFlagPublisher
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: {isEnable in
   

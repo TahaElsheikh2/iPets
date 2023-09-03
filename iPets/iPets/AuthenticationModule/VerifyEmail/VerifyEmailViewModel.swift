@@ -9,8 +9,15 @@ import Foundation
 import Combine
 class VerifyEmailViewModel{
     
-    var useCase : VerifyEmailUseCaseProtocol
-    var resendVerifyCodeUseCase : ResendVerifyCodeUseCaseProtocol
+    private var useCase : VerifyEmailUseCaseProtocol
+    private var resendVerifyCodeUseCase : ResendVerifyCodeUseCaseProtocol
+    
+    private var countdown = 0
+    private var timerSubject = PassthroughSubject<Int,Never>()
+    private var timerLabelIsEnabledFlagSubject = PassthroughSubject<Bool,Never>()
+    lazy var timerLabelIsEnabledFlagPublisher = timerLabelIsEnabledFlagSubject.eraseToAnyPublisher()
+    lazy var timerPublisher = timerSubject.eraseToAnyPublisher()
+    private var timer: AnyCancellable?
     
     init(useCase: VerifyEmailUseCaseProtocol = VerifyEmailUseCase(),
          resendVerifyCodeUseCase : ResendVerifyCodeUseCaseProtocol = ResendVerifyCodeUseCase()) {
@@ -18,21 +25,21 @@ class VerifyEmailViewModel{
         self.resendVerifyCodeUseCase = resendVerifyCodeUseCase
     }
     
-//    func legacyVerifyEmail(verifyEmailDTO: VerifyEmailDTO){
-//
-//        self.useCase.legacyVerifyEmail(verifyEmailDTO: verifyEmailDTO) { model in
-//
-//            print("#### model.userName = \(model.data?.userName)")
-//            print("#### model type= \(model.data?.type)")
-//            print("#### model token= \(model.data?.token)")
-//            print("#### model email= \(model.data?.email)")
-//            print("#### model id= \(model.data?.id)")
-//
-//        } failureCompletion: { error in
-//            print("#### error.desc = \(error.errorDesc)")
-//            print("#### error.errorCode = \(error.errorCode)")
-//        }
-//    }
+    //    func legacyVerifyEmail(verifyEmailDTO: VerifyEmailDTO){
+    //
+    //        self.useCase.legacyVerifyEmail(verifyEmailDTO: verifyEmailDTO) { model in
+    //
+    //            print("#### model.userName = \(model.data?.userName)")
+    //            print("#### model type= \(model.data?.type)")
+    //            print("#### model token= \(model.data?.token)")
+    //            print("#### model email= \(model.data?.email)")
+    //            print("#### model id= \(model.data?.id)")
+    //
+    //        } failureCompletion: { error in
+    //            print("#### error.desc = \(error.errorDesc)")
+    //            print("#### error.errorCode = \(error.errorCode)")
+    //        }
+    //    }
     
     func verifyEmail(verifyEmailDTO: VerifyEmailDTO) -> AnyPublisher<AuthModel,IPETSErrors> {
         
@@ -46,30 +53,24 @@ class VerifyEmailViewModel{
     
     func getEmailString() -> String {
         
-       let email = CacheHandler.getStringFromKeychain(forKey: CacheConstants.Email_Constant) ?? ""
+        let email = CacheHandler.getStringFromKeychain(forKey: CacheConstants.Email_Constant) ?? ""
         return email
     }
     
-    private var countdown = 0
-    var timerSubject = PassthroughSubject<Int,Never>()
-    var timerLabelIsEnabledFlagSubject = PassthroughSubject<Bool,Never>()
-
-       private var timer: AnyCancellable?
-       
     func startCountdown() {
         countdown = 60
         timerLabelIsEnabledFlagSubject.send(false)
-           timer = Timer.publish(every: 1, on: .main, in: .default)
-               .autoconnect()
-               .sink { [weak self] _ in
-                   guard let self = self else { return }
-                   if self.countdown > 0 {
-                       self.countdown -= 1
-                       self.timerSubject.send(self.countdown)
-                   } else {
-                       self.timerLabelIsEnabledFlagSubject.send(true)
-                       self.timer?.cancel()
-                   }
-               }
-       }
+        timer = Timer.publish(every: 1, on: .main, in: .default)
+            .autoconnect()
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                if self.countdown > 0 {
+                    self.countdown -= 1
+                    self.timerSubject.send(self.countdown)
+                } else {
+                    self.timerLabelIsEnabledFlagSubject.send(true)
+                    self.timer?.cancel()
+                }
+            }
+    }
 }
